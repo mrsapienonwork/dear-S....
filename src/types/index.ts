@@ -42,6 +42,20 @@ export interface Habit {
   name: string;
 }
 
+export interface Mistake {
+  id: string;
+  subjectId: string;
+  chapter: string;
+  topic?: string;
+  mistakeTitle: string;
+  mistakeDescription: string;
+  reason: string;
+  fixOrCorrection: string;
+  status: 'resolved' | 'unresolved';
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface AppSettings {
   minStudyHours: number;
   subtitle: string;
@@ -62,4 +76,5 @@ export interface AppData {
   subjects: Subject[];
   chapters: Chapter[];
   habits: Habit[];
+  mistakes?: Mistake[];
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, CheckSquare, BookOpen, Calendar, Activity, Settings, Target, LogOut, Menu, X, Timer, Mail } from 'lucide-react';
+import { LayoutDashboard, CheckSquare, BookOpen, Calendar, Activity, Settings, Target, LogOut, Menu, X, Timer, Mail, AlertOctagon } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAccess } from '../access/AccessContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -16,6 +16,7 @@ export function Layout() {
     { name: 'Focus Mode', path: '/focus', icon: Timer },
     { name: 'Check-In', path: '/check-in', icon: CheckSquare },
     { name: 'Subjects', path: '/subjects', icon: BookOpen },
+    { name: 'Mistakes', path: '/mistakes', icon: AlertOctagon },
     { name: 'Habits', path: '/habits', icon: Target },
     { name: 'Letters', path: '/letters', icon: Mail },
     { name: 'Calendar', path: '/calendar', icon: Calendar },

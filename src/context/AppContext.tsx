@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { AppData, DailyEntry, Subject, Chapter, Habit, AppSettings, DayStatus } from '../types';
+import { AppData, DailyEntry, Subject, Chapter, Habit, Mistake, AppSettings, DayStatus } from '../types';
 import { getTodayString } from '../lib/utils';
 import { computeAllScores, ScoreBreakdown } from '../lib/disciplineScore';
 
@@ -32,6 +32,7 @@ const DEFAULT_DATA: AppData = {
   subjects: DEFAULT_SUBJECTS,
   chapters: [],
   habits: DEFAULT_HABITS,
+  mistakes: [],
 };
 
 interface AppContextType {
@@ -47,6 +48,9 @@ interface AppContextType {
   addHabit: (habit: Habit) => void;
   updateHabit: (habit: Habit) => void;
   deleteHabit: (id: string) => void;
+  addMistake: (mistake: Mistake) => void;
+  updateMistake: (mistake: Mistake) => void;
+  deleteMistake: (id: string) => void;
   resetData: () => void;
   importData: (data: AppData) => void;
   calculateDayStatus: (entry: Partial<DailyEntry>) => DayStatus;
@@ -190,6 +194,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   };
 
+  const addMistake = (mistake: Mistake) => {
+    setData((prev) => ({ ...prev, mistakes: [...(prev.mistakes || []), mistake] }));
+  };
+
+  const updateMistake = (mistake: Mistake) => {
+    setData((prev) => ({
+      ...prev,
+      mistakes: (prev.mistakes || []).map((m) => (m.id === mistake.id ? mistake : m)),
+    }));
+  };
+
+  const deleteMistake = (id: string) => {
+    setData((prev) => ({
+      ...prev,
+      mistakes: (prev.mistakes || []).filter((m) => m.id !== id),
+    }));
+  };
+
   const resetData = () => {
     setData(DEFAULT_DATA);
   };
@@ -213,6 +235,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         addHabit,
         updateHabit,
         deleteHabit,
+        addMistake,
+        updateMistake,
+        deleteMistake,
         resetData,
         importData,
         calculateDayStatus,
