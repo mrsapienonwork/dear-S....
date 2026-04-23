@@ -14,33 +14,33 @@ import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
 import { FocusMode } from './pages/FocusMode';
 import { Letters } from './pages/Letters';
-import { Mistakes } from './pages/Mistakes';
+import { ErrorLab } from './pages/ErrorLab';
 
 export default function App() {
- return (
- <AccessProvider>
- <AppProvider>
- <BackgroundProvider>
- <AppRoot>
- <Router>
- <Routes>
- <Route path="/" element={<Layout />}>
- <Route index element={<Dashboard />} />
- <Route path="check-in" element={<CheckIn />} />
- <Route path="subjects" element={<Subjects />} />
- <Route path="mistakes" element={<Mistakes />} />
- <Route path="habits" element={<Habits />} />
- <Route path="letters" element={<Letters />} />
- <Route path="calendar" element={<CalendarView />} />
- <Route path="analytics" element={<Analytics />} />
- <Route path="settings" element={<Settings />} />
- <Route path="focus" element={<FocusMode />} />
- </Route>
- </Routes>
- </Router>
- </AppRoot>
- </BackgroundProvider>
- </AppProvider>
- </AccessProvider>
- );
+  return (
+    <AccessProvider>
+      <AppProvider>
+        <BackgroundProvider>
+          <AppRoot>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="check-in" element={<CheckIn />} />
+                  <Route path="subjects" element={<Subjects />} />
+                  <Route path="habits" element={<Habits />} />
+                  <Route path="error-lab" element={<ErrorLab />} />
+                  <Route path="letters" element={<Letters />} />
+                  <Route path="calendar" element={<CalendarView />} />
+                  <Route path="analytics" element={<Analytics />} />
+                  <Route path="settings" element={<Settings />} />
+                  <Route path="focus" element={<FocusMode />} />
+                </Route>
+              </Routes>
+            </Router>
+          </AppRoot>
+        </BackgroundProvider>
+      </AppProvider>
+    </AccessProvider>
+  );
 }
